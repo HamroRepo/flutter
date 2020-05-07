@@ -1,37 +1,74 @@
 import 'question.dart';
-import 'package:audioplayers/audio_cache.dart';
 
 class QuizBrain {
   int _questionNumber = 0;
+  int _userScore = 0;
+
   List<Question> _questionBank = [
-    Question('Which is the tallest mountain in the world?', 'Mt.Everest'),
+    Question('Which is the tallest mountain in the world?', 'Mt.Everest', 'K2',
+        'Annapurna', 'Dhaulagiri', 'Mt.Everest'),
     Question('Who was the first man to fly around the earth with a spaceship?',
-        'Gagarin'),
-    Question('In which country were the first Olympic Games held?', 'Greece'),
-    Question('What do the Japanese people call their own country?', 'Nippon'),
+        'Armstrong', 'Gagarin', 'Prachanda', 'Trump', 'Gagarin'),
+    Question('In which country were the first Olympic Games held?', 'Rome',
+        'Italy', 'Greece', 'Britian', 'Greece'),
+    Question('What do the Japanese people call their own country?', 'Eikoku',
+        'Beikoku', 'Nippon', 'Kankoku', 'Nippon'),
     Question('What island, which belonged to Denmark, was independent in 1944?',
-        'Iceland'),
+        'Greece', 'Vinland', 'Iceland', 'Switzerland', 'Iceland'),
+    Question('Which Turkish city has the name of a cartoon character?',
+        'Superman', 'Batman', 'Spiderman', 'Micki Mouse', 'Batman'),
+    Question('Who killed the Minotaur ?', 'Theseus', 'Perseus', 'Hercules',
+        'Prometheus', 'Theseus'),
+    Question('What is the name of the winged horse in Greek mythology?',
+        'Unicorn', 'Pegasus', 'Minotaur', 'Griffin', 'Pegasus'),
+    Question('What is the national sport in Japan?', 'Football',
+        'Sumo Wrestling', 'Swimming', 'Sword Play', 'Sumo Wrestling'),
     Question(
-        'Which Turkish city has the name of a cartoon character?', 'Batman'),
-    Question('Who killed the Minotaur ?', 'Theseus'),
-    Question(
-        'What is the name of the winged horse in Greek mythology?', 'Pegasus'),
-    Question('What is the national sport in Japan?', 'Sumo Wrestling'),
-    Question('Which football club has the most UCL wins?', 'Real Madrid'),
+      'Which football club has the most UCL wins?',
+      'Barcelona',
+      'Liverpool',
+      'Real Madrid',
+      'AC Milan',
+      'Real Madrid',
+    ),
     Question(
         'Which football club won three straight UEFA Champions League titles since the tournament\'s inception?',
+        'AC Milan',
+        'Bayern Munich',
+        'Real Madrid',
+        'Liverpool',
         'Real Madrid'),
-    Question('When did dinosaurs become extinct?', '65M yrs ago'),
+    Question('When did dinosaurs become extinct?', '100M yrs ago',
+        '65M yrs ago', '20M yrs ago', '200M yrs ago', '65M yrs ago'),
     Question(
-        'During which era did dinosaurs dominate the world?', 'Mesozoic era'),
-    Question('Which is the largest land carnivorous animal?', 'Spinosaurus'),
-    Question('What is the largest predator in the world?', 'Polar Bear'),
+        'During which era did dinosaurs dominate the world?',
+        'Platezioc era',
+        'Mesozoic era',
+        'Cenozoic era',
+        'Paleozoic era',
+        'Mesozoic era'),
+    Question(
+        'Which is the largest land carnivorous animal?',
+        'Tyrannosaurus Rex',
+        'Spinosaurus',
+        'Argentinosaurus',
+        'Titanoceratops',
+        'Spinosaurus'),
+    Question('What is the largest predator in the world?', 'Brown Bear',
+        'African Lion', 'Polar Bear', 'Siberean Tiger', 'Polar Bear'),
     Question(
         'Which actor appeared in famous films, such as \'Gone in 60 Seconds\'\', \'Face/Off\', \'Ghost Rider\'?',
+        'Nicolas Cage',
+        'Jhonny Depp',
+        'Jeremy Renner',
+        'Will Smith',
         'Nicolas Cage'),
-    Question('In what year was Google launched on the web?', '1998'),
+    Question('In what year was Google launched on the web?', '1990', '1995',
+        '2000', '1998', '1998'),
     Question('Which vitamin is the only one that you will not find in an egg?',
-        'Vitamin C'),
+        'Vitamin A', 'Vitamin K', 'Vitamin C', 'Vitamin D', 'Vitamin C'),
+    Question('Which vitamin is the only one that you will not find in an egg?',
+        'Vitamin A', 'Vitamin K', 'Vitamin C', 'Vitamin D', null),
   ];
 
   void changeQuestion() {
@@ -41,9 +78,23 @@ class QuizBrain {
   }
 
   String getQuestion() {
-//    final player = AudioCache();
-//    player.play('1.wav');
     return _questionBank[_questionNumber].questionText;
+  }
+
+  String getOption1() {
+    return _questionBank[_questionNumber].option1;
+  }
+
+  String getOption2() {
+    return _questionBank[_questionNumber].option2;
+  }
+
+  String getOption3() {
+    return _questionBank[_questionNumber].option3;
+  }
+
+  String getOption4() {
+    return _questionBank[_questionNumber].option4;
   }
 
   String getCorrectAnswer() {
@@ -52,7 +103,6 @@ class QuizBrain {
 
   bool isFinished() {
     if (_questionNumber >= _questionBank.length - 1) {
-      print('Now returning true');
       return true;
     } else {
       return false;
@@ -61,5 +111,14 @@ class QuizBrain {
 
   void reset() {
     _questionNumber = 0;
+    _userScore = 0;
+  }
+
+  void increaseScore() {
+    _userScore++;
+  }
+
+  int returnScore() {
+    return _userScore;
   }
 }

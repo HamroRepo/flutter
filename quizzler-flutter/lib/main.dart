@@ -1,15 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'option.dart';
 import 'questionBank.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:audioplayers/audio_cache.dart';
 
 QuizBrain quizBrain = QuizBrain();
-Option1 opt1 = Option1();
-Option2 opt2 = Option2();
-Option3 opt3 = Option3();
-Option4 opt4 = Option4();
 
 void main() => runApp(Quizzler());
 
@@ -33,11 +28,9 @@ class Quizzler extends StatelessWidget {
         ),
         backgroundColor: Colors.blueGrey.shade900,
         //Colors.grey.shade900,
-        body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.0),
-            child: QuizPage(),
-          ),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10.0),
+          child: QuizPage(),
         ),
       ),
     );
@@ -59,57 +52,35 @@ class _QuizPageState extends State<QuizPage> {
         Alert(
           context: context,
           title: 'Finished!',
-          desc: 'You\'ve reached the end of the quiz.',
+          desc: "You scored ${quizBrain.returnScore()}/18!",
         ).show();
-
         quizBrain.reset();
-        opt1.reset();
-        opt2.reset();
-        opt3.reset();
-        opt4.reset();
 
         scoreKeeper = [];
       } else {
         if (answer == quizBrain.getCorrectAnswer()) {
           final player = AudioCache();
           player.play('2.wav');
-          scoreKeeper.add(Icon(
-            Icons.check,
-            color: Colors.green,
-          ));
+          scoreKeeper.add(
+            Icon(
+              Icons.check,
+              color: Colors.green,
+            ),
+          );
+          quizBrain.increaseScore();
         } else {
           final player = AudioCache();
           player.play('3.wav');
-          scoreKeeper.add(Icon(
-            Icons.close,
-            color: Colors.red,
-          ));
+          scoreKeeper.add(
+            Icon(
+              Icons.close,
+              color: Colors.red,
+            ),
+          );
         }
         quizBrain.changeQuestion();
-        opt2.changeOpt2();
-        opt3.changeOpt3();
-        opt1.changeOpt1();
-        opt4.changeOpt4();
       }
     });
-//    if (answer == quizBrain.getCorrectAnswer()) {
-//      scoreKeeper.add(Icon(
-//        Icons.check,
-//        color: Colors.green,
-//      ));
-//    } else {
-//      scoreKeeper.add(Icon(
-//        Icons.close,
-//        color: Colors.red,
-//      ));
-//    }
-//    setState(() {
-//      quizBrain.changeQuestion();
-//      opt2.changeOpt2();
-//      opt3.changeOpt3();
-//      opt1.changeOpt1();
-//      opt4.changeOpt4();
-//    });
   }
 
   List<Icon> scoreKeeper = [];
@@ -117,18 +88,15 @@ class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
     return Column(
-
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         Expanded(
-
-          flex: 5,
+          flex: 4,
           child: Padding(
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                //'',
                 quizBrain.getQuestion(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -140,80 +108,85 @@ class _QuizPageState extends State<QuizPage> {
           ),
         ),
         Expanded(
-          child: Row(
+          flex: 1,
+          child: Column(
             children: <Widget>[
-              Expanded(
-                  flex: 5,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-                    child: FlatButton(
-                      color: Colors.black,
-                      onPressed: () {
-                        correct(opt1.getOption1());
-                      },
-                      child: Text(opt1.getOption1(),
-                        style:TextStyle(
-                            color: Colors.white,
-                          fontSize: 18
-                        ),),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      child: FlatButton(
+                        color: Colors.indigo.shade600,
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        onPressed: () {
+                          correct(quizBrain.getOption1());
+                        },
+                        child: Text(
+                          quizBrain.getOption1(),
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                      ),
                     ),
-                  )),
-              Expanded(
-                  flex: 5,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-                    //padding: const EdgeInsets.all(8.0),
-                    child: FlatButton(
-                      color: Colors.black,
-                      onPressed: () {
-                        correct(opt2.getOption2());
-                      },
-                      child: Text(opt2.getOption2(),
-                        style:TextStyle(
-                            color: Colors.white,
-                            fontSize: 18
-                        ),),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      child: FlatButton(
+                        color: Colors.indigo.shade600,
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        onPressed: () {
+                          correct(quizBrain.getOption2());
+                        },
+                        child: Text(
+                          quizBrain.getOption2(),
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                      ),
                     ),
-                  ))
-            ],
-          ),
-        ),
-        Expanded(
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                  flex: 5,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-                    child: FlatButton(
-                      color: Colors.black,
-                      onPressed: () {
-                        correct(opt3.getOption3());
-                      },
-                      child: Text(opt3.getOption3(),
-                        style:TextStyle(
-                            color: Colors.white,
-                            fontSize: 18
-                        ),),
+                  ),
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      child: FlatButton(
+                        color: Colors.indigo.shade600,
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        onPressed: () {
+                          correct(quizBrain.getOption3());
+                        },
+                        child: Text(
+                          quizBrain.getOption3(),
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                      ),
                     ),
-                  )),
-              Expanded(
-                  flex: 5,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-                    //padding: const EdgeInsets.all(8.0),
-                    child: FlatButton(
-                      color: Colors.black,
-                      onPressed: () {
-                        correct(opt4.getOption4());
-                      },
-                      child: Text(opt4.getOption4(),
-                      style:TextStyle(
-                        color: Colors.white,
-                          fontSize: 18
-                      ),),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      child: FlatButton(
+                        color: Colors.indigo.shade600,
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        onPressed: () {
+                          correct(quizBrain.getOption4());
+                        },
+                        child: Text(
+                          quizBrain.getOption4(),
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                      ),
                     ),
-                  ))
+                  ),
+                ],
+              ),
             ],
           ),
         ),
