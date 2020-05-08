@@ -88,11 +88,10 @@ class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
+        Spacer(),
         Expanded(
-          flex: 4,
           child: Padding(
             padding: EdgeInsets.all(10.0),
             child: Center(
@@ -107,8 +106,8 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
         ),
+        Spacer(),
         Expanded(
-          flex: 1,
           child: Column(
             children: <Widget>[
               Row(
