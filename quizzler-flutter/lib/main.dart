@@ -52,7 +52,8 @@ class _QuizPageState extends State<QuizPage> {
         Alert(
           context: context,
           title: 'Finished!',
-          desc: "You scored ${quizBrain.returnScore()}/18!",
+          desc:
+              "You scored ${quizBrain.returnScore()}/${quizBrain.returnTotalQuestion()}!",
         ).show();
         quizBrain.reset();
 
@@ -129,19 +130,22 @@ class _QuizPageState extends State<QuizPage> {
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                      child: FlatButton(
-                        color: Colors.indigo.shade600,
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        onPressed: () {
-                          correct(quizBrain.getOption2());
-                        },
-                        child: Text(
-                          quizBrain.getOption2(),
-                          style: TextStyle(color: Colors.white, fontSize: 18),
+                  Visibility(
+                    visible: quizBrain.shouldBeVisible(),
+                    child: Expanded(
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                        child: FlatButton(
+                          color: Colors.indigo.shade600,
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          onPressed: () {
+                            correct(quizBrain.getOption2());
+                          },
+                          child: Text(
+                            quizBrain.getOption2(),
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
                         ),
                       ),
                     ),
@@ -150,36 +154,42 @@ class _QuizPageState extends State<QuizPage> {
               ),
               Row(
                 children: <Widget>[
-                  Expanded(
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                      child: FlatButton(
-                        color: Colors.indigo.shade600,
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        onPressed: () {
-                          correct(quizBrain.getOption3());
-                        },
-                        child: Text(
-                          quizBrain.getOption3(),
-                          style: TextStyle(color: Colors.white, fontSize: 18),
+                  Visibility(
+                    visible: quizBrain.shouldBeVisible(),
+                    child: Expanded(
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                        child: FlatButton(
+                          color: Colors.indigo.shade600,
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          onPressed: () {
+                            correct(quizBrain.getOption3());
+                          },
+                          child: Text(
+                            quizBrain.getOption3(),
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                      child: FlatButton(
-                        color: Colors.indigo.shade600,
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        onPressed: () {
-                          correct(quizBrain.getOption4());
-                        },
-                        child: Text(
-                          quizBrain.getOption4(),
-                          style: TextStyle(color: Colors.white, fontSize: 18),
+                  Visibility(
+                    visible: quizBrain.shouldBeVisible(),
+                    child: Expanded(
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                        child: FlatButton(
+                          color: Colors.indigo.shade600,
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          onPressed: () {
+                            correct(quizBrain.getOption4());
+                          },
+                          child: Text(
+                            quizBrain.getOption4(),
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
                         ),
                       ),
                     ),
@@ -192,7 +202,7 @@ class _QuizPageState extends State<QuizPage> {
         Wrap(
           direction: Axis.horizontal,
           children: scoreKeeper,
-        )
+        ),
       ],
     );
   }

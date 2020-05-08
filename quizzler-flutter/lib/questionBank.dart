@@ -67,8 +67,7 @@ class QuizBrain {
         '2000', '1998', '1998'),
     Question('Which vitamin is the only one that you will not find in an egg?',
         'Vitamin A', 'Vitamin K', 'Vitamin C', 'Vitamin D', 'Vitamin C'),
-    Question('Which vitamin is the only one that you will not find in an egg?',
-        'Vitamin A', 'Vitamin K', 'Vitamin C', 'Vitamin D', null),
+    Question('You\'ve completed the quiz!!!', 'Show Score', '', '', '', null),
   ];
 
   void changeQuestion() {
@@ -120,5 +119,16 @@ class QuizBrain {
 
   int returnScore() {
     return _userScore;
+  }
+
+  int returnTotalQuestion() {
+    return _questionBank.length - 1;
+  }
+
+  bool shouldBeVisible() {
+    if (_questionNumber == _questionBank.length - 1)
+      return false;
+    else
+      return true;
   }
 }
