@@ -1,134 +1,287 @@
+
 import 'question.dart';
 
-class QuizBrain {
+class QuestionBank {
   int _questionNumber = 0;
   int _userScore = 0;
 
   List<Question> _questionBank = [
-    Question('Which is the tallest mountain in the world?', 'Mt.Everest', 'K2',
-        'Annapurna', 'Dhaulagiri', 'Mt.Everest'),
-    Question('Who was the first man to fly around the earth with a spaceship?',
-        'Armstrong', 'Gagarin', 'Prachanda', 'Trump', 'Gagarin'),
-    Question('In which country were the first Olympic Games held?', 'Rome',
-        'Italy', 'Greece', 'Britian', 'Greece'),
-    Question('What do the Japanese people call their own country?', 'Eikoku',
-        'Beikoku', 'Nippon', 'Kankoku', 'Nippon'),
-    Question('What island, which belonged to Denmark, was independent in 1944?',
-        'Greece', 'Vinland', 'Iceland', 'Switzerland', 'Iceland'),
-    Question('Which Turkish city has the name of a cartoon character?',
-        'Superman', 'Batman', 'Spiderman', 'Micki Mouse', 'Batman'),
-    Question('Who killed the Minotaur ?', 'Theseus', 'Perseus', 'Hercules',
-        'Prometheus', 'Theseus'),
-    Question('What is the name of the winged horse in Greek mythology?',
-        'Unicorn', 'Pegasus', 'Minotaur', 'Griffin', 'Pegasus'),
-    Question('What is the national sport in Japan?', 'Football',
-        'Sumo Wrestling', 'Swimming', 'Sword Play', 'Sumo Wrestling'),
     Question(
-      'Which football club has the most UCL wins?',
-      'Barcelona',
-      'Liverpool',
-      'Real Madrid',
-      'AC Milan',
-      'Real Madrid',
+      'Which is the tallest mountain in the world?',
+      ['Mt.Everest', 'K2', 'Annapurna', 'Dhaulagiri'],
+      0,
     ),
     Question(
-        'Which football club won three straight UEFA Champions League titles since the tournament\'s inception?',
-        'AC Milan',
-        'Bayern Munich',
-        'Real Madrid',
-        'Liverpool',
-        'Real Madrid'),
-    Question('When did dinosaurs become extinct?', '100M yrs ago',
-        '65M yrs ago', '20M yrs ago', '200M yrs ago', '65M yrs ago'),
+      'Who was the first man to fly around the earth with a spaceship?',
+      ['Armstrong', 'Gagarin', 'Prachanda', 'Trump'],
+      1,
+    ),
     Question(
-        'During which era did dinosaurs dominate the world?',
-        'Platezioc era',
-        'Mesozoic era',
-        'Cenozoic era',
-        'Paleozoic era',
-        'Mesozoic era'),
+      'In which country were the first Olympic Games held?',
+      ['Rome', 'Italy', 'Greece', 'Britian'],
+      2,
+    ),
     Question(
-        'Which is the largest land carnivorous animal?',
-        'Tyrannosaurus Rex',
-        'Spinosaurus',
-        'Argentinosaurus',
-        'Titanoceratops',
-        'Spinosaurus'),
-    Question('What is the largest predator in the world?', 'Brown Bear',
-        'African Lion', 'Polar Bear', 'Siberean Tiger', 'Polar Bear'),
+      'What do the Japanese people call their own country?',
+      ['Eikoku', 'Beikoku', 'Nippon', 'Kankoku'],
+      2,
+    ),
     Question(
-        'Which actor appeared in famous films, such as \'Gone in 60 Seconds\'\', \'Face/Off\', \'Ghost Rider\'?',
-        'Nicolas Cage',
-        'Jhonny Depp',
-        'Jeremy Renner',
-        'Will Smith',
-        'Nicolas Cage'),
-    Question('In what year was Google launched on the web?', '1990', '1995',
-        '2000', '1998', '1998'),
-    Question('Which vitamin is the only one that you will not find in an egg?',
-        'Vitamin A', 'Vitamin K', 'Vitamin C', 'Vitamin D', 'Vitamin C'),
-    Question('You\'ve completed the quiz!!!', 'Show Score', '', '', '', null),
+      'What island, which belonged to Denmark, was independent in 1944?',
+      ['Greece', 'Vinland', 'Iceland', 'Switzerland'],
+      2,
+    ),
+    Question(
+      'Which Turkish city has the name of a cartoon character?',
+      ['Superman', 'Batman', 'Spiderman', 'Micki Mouse'],
+      1,
+    ),
+    Question(
+      'Who killed the Minotaur ?',
+      ['Theseus', 'Perseus', 'Hercules', 'Prometheus'],
+      0,
+    ),
+    Question(
+      'What is the name of the winged horse in Greek mythology?',
+      ['Unicorn', 'Pegasus', 'Minotaur', 'Griffin'],
+      1,
+    ),
+    Question(
+      'What is the national sport in Japan?',
+      ['Football', 'Sumo Wrestling', 'Swimming', 'Sword Play'],
+      1,
+    ),
+    Question(
+      'Which football club has the most UCL wins?',
+      ['Barcelona', 'Liverpool', 'Real Madrid', 'AC Milan'],
+      2,
+    ),
+    Question(
+      'Which football club won three straight UEFA Champions League titles since the tournament\'s inception?',
+      ['AC Milan', 'Bayern Munich', 'Real Madrid', 'Liverpool'],
+      2,
+    ),
+    Question(
+      'When did dinosaurs become extinct?',
+      ['100M yrs ago', '65M yrs ago', '20M yrs ago', '200M yrs ago'],
+      1,
+    ),
+    Question(
+      'During which era did dinosaurs dominate the world?',
+      ['Platezioc era', 'Mesozoic era', 'Cenozoic era', 'Paleozoic era'],
+      1,
+    ),
+    Question(
+      'Which is the largest land carnivorous animal?',
+      ['Tyrannosaurus Rex', 'Spinosaurus', 'Argentinosaurus', 'Titanoceratops'],
+      1,
+    ),
+    Question(
+      'What is the largest predator in the world?',
+      ['Brown Bear', 'African Lion', 'Polar Bear', 'Siberean Tiger'],
+      2,
+    ),
+    Question(
+      'Which actor appeared in famous films, such as \'Gone in 60 Seconds\'\', \'Face/Off\', \'Ghost Rider\'?',
+      ['Nicolas Cage', 'Jhonny Depp', 'Jeremy Renner', 'Will Smith'],
+      0,
+    ),
+    Question(
+      'In what year was Google launched on the web?',
+      ['1990', '1995', '2000', '1998'],
+      3,
+    ),
+    Question(
+      'Which vitamin is the only one that you will not find in an egg?',
+      ['Vitamin A', 'Vitamin K', 'Vitamin C', 'Vitamin D'],
+      2,
+    ),
+    Question(
+      'You\'ve completed the quiz!!!',
+      ['Show Score', '', '', ''],
+      null,
+    ),
   ];
 
-  void changeQuestion() {
-    if (_questionNumber < _questionBank.length - 1) {
-      _questionNumber++;
-    }
+  void nextQuestion() {
+    if (_questionNumber < _questionBank.length - 1) _questionNumber++;
+  }
+
+  bool isVisible() {
+    if (_questionNumber == _questionBank.length - 1)
+      return false;
+    else
+      return true;
+  }
+
+  bool isFinished() {
+    if (_questionNumber == _questionBank.length - 1)
+      return true;
+    else
+      return false;
   }
 
   String getQuestion() {
     return _questionBank[_questionNumber].questionText;
   }
 
-  String getOption1() {
-    return _questionBank[_questionNumber].option1;
+  String getOption(int optionNumber) {
+    return _questionBank[_questionNumber].option[optionNumber];
   }
 
-  String getOption2() {
-    return _questionBank[_questionNumber].option2;
-  }
-
-  String getOption3() {
-    return _questionBank[_questionNumber].option3;
-  }
-
-  String getOption4() {
-    return _questionBank[_questionNumber].option4;
-  }
-
-  String getCorrectAnswer() {
+  int getAnswer() {
     return _questionBank[_questionNumber].questionAnswer;
-  }
-
-  bool isFinished() {
-    if (_questionNumber >= _questionBank.length - 1) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  void reset() {
-    _questionNumber = 0;
-    _userScore = 0;
   }
 
   void increaseScore() {
     _userScore++;
   }
 
-  int returnScore() {
+  int getUserScore() {
     return _userScore;
   }
 
-  int returnTotalQuestion() {
-    return _questionBank.length - 1;
+  int totalQuestionNumber() {
+    return _questionBank.length - 2;
   }
 
-  bool shouldBeVisible() {
-    if (_questionNumber == _questionBank.length - 1)
-      return false;
-    else
-      return true;
+  void reset() {
+    _userScore = 0;
+    _questionNumber = 0;
   }
 }
+
+// import 'question.dart';
+//
+// class QuizBrain {
+//   int _questionNumber = 0;
+//   int _userScore = 0;
+//
+//   List<Question> _questionBank = [
+//     Question('Which is the tallest mountain in the world?', 'Mt.Everest', 'K2',
+//         'Annapurna', 'Dhaulagiri', 'Mt.Everest'),
+//     Question('Who was the first man to fly around the earth with a spaceship?',
+//         'Armstrong', 'Gagarin', 'Prachanda', 'Trump', 'Gagarin'),
+//     Question('In which country were the first Olympic Games held?', 'Rome',
+//         'Italy', 'Greece', 'Britian', 'Greece'),
+//     Question('What do the Japanese people call their own country?', 'Eikoku',
+//         'Beikoku', 'Nippon', 'Kankoku', 'Nippon'),
+//     Question('What island, which belonged to Denmark, was independent in 1944?',
+//         'Greece', 'Vinland', 'Iceland', 'Switzerland', 'Iceland'),
+//     Question('Which Turkish city has the name of a cartoon character?',
+//         'Superman', 'Batman', 'Spiderman', 'Micki Mouse', 'Batman'),
+//     Question('Who killed the Minotaur ?', 'Theseus', 'Perseus', 'Hercules',
+//         'Prometheus', 'Theseus'),
+//     Question('What is the name of the winged horse in Greek mythology?',
+//         'Unicorn', 'Pegasus', 'Minotaur', 'Griffin', 'Pegasus'),
+//     Question('What is the national sport in Japan?', 'Football',
+//         'Sumo Wrestling', 'Swimming', 'Sword Play', 'Sumo Wrestling'),
+//     Question(
+//       'Which football club has the most UCL wins?',
+//       'Barcelona',
+//       'Liverpool',
+//       'Real Madrid',
+//       'AC Milan',
+//       'Real Madrid',
+//     ),
+//     Question(
+//         'Which football club won three straight UEFA Champions League titles since the tournament\'s inception?',
+//         'AC Milan',
+//         'Bayern Munich',
+//         'Real Madrid',
+//         'Liverpool',
+//         'Real Madrid'),
+//     Question('When did dinosaurs become extinct?', '100M yrs ago',
+//         '65M yrs ago', '20M yrs ago', '200M yrs ago', '65M yrs ago'),
+//     Question(
+//         'During which era did dinosaurs dominate the world?',
+//         'Platezioc era',
+//         'Mesozoic era',
+//         'Cenozoic era',
+//         'Paleozoic era',
+//         'Mesozoic era'),
+//     Question(
+//         'Which is the largest land carnivorous animal?',
+//         'Tyrannosaurus Rex',
+//         'Spinosaurus',
+//         'Argentinosaurus',
+//         'Titanoceratops',
+//         'Spinosaurus'),
+//     Question('What is the largest predator in the world?', 'Brown Bear',
+//         'African Lion', 'Polar Bear', 'Siberean Tiger', 'Polar Bear'),
+//     Question(
+//         'Which actor appeared in famous films, such as \'Gone in 60 Seconds\'\', \'Face/Off\', \'Ghost Rider\'?',
+//         'Nicolas Cage',
+//         'Jhonny Depp',
+//         'Jeremy Renner',
+//         'Will Smith',
+//         'Nicolas Cage'),
+//     Question('In what year was Google launched on the web?', '1990', '1995',
+//         '2000', '1998', '1998'),
+//     Question('Which vitamin is the only one that you will not find in an egg?',
+//         'Vitamin A', 'Vitamin K', 'Vitamin C', 'Vitamin D', 'Vitamin C'),
+//     Question('You\'ve completed the quiz!!!', 'Show Score', '', '', '', null),
+//   ];
+//
+//   void changeQuestion() {
+//     if (_questionNumber < _questionBank.length - 1) {
+//       _questionNumber++;
+//     }
+//   }
+//
+//   String getQuestion() {
+//     return _questionBank[_questionNumber].questionText;
+//   }
+//
+//   String getOption1() {
+//     return _questionBank[_questionNumber].option1;
+//   }
+//
+//   String getOption2() {
+//     return _questionBank[_questionNumber].option2;
+//   }
+//
+//   String getOption3() {
+//     return _questionBank[_questionNumber].option3;
+//   }
+//
+//   String getOption4() {
+//     return _questionBank[_questionNumber].option4;
+//   }
+//
+//   String getCorrectAnswer() {
+//     return _questionBank[_questionNumber].questionAnswer;
+//   }
+//
+//   bool isFinished() {
+//     if (_questionNumber >= _questionBank.length - 1) {
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   }
+//
+//   void reset() {
+//     _questionNumber = 0;
+//     _userScore = 0;
+//   }
+//
+//   void increaseScore() {
+//     _userScore++;
+//   }
+//
+//   int returnScore() {
+//     return _userScore;
+//   }
+//
+//   int returnTotalQuestion() {
+//     return _questionBank.length - 1;
+//   }
+//
+//   bool shouldBeVisible() {
+//     if (_questionNumber == _questionBank.length - 1)
+//       return false;
+//     else
+//       return true;
+//   }
+// }
